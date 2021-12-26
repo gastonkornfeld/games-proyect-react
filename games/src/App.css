@@ -51,3 +51,14 @@ body {
   color: white;
   font-size: 40px;
 }
+
+
+.card-outer  {
+  perspective: 1000px;
+  height: calc((100vh - 90px) / 6);
+  max-height: calc((100vw - 90px) / 6);
+}
+
+.card-outer.flipped .card {
+  transform: rotateY(0);
+}

@@ -30,9 +30,21 @@ function Header() {
                             <img src= 'images/watchlist-icon.svg'/> 
                             <Link to="/breakout">
                                 <span>Breakout</span>
+                            </Link>                
+                        </a>
+                        <a>
+                            <img src= 'images/play-icon-white.png'/>
+                            <Link to="/gameoflife">
+                                <span>Game of life</span>
                             </Link>
-                            
-                            
+
+                        </a>
+                        <a>
+                            <img src= 'https://cdn2.vectorstock.com/i/1000x1000/78/51/refresh-head-memory-icon-vector-18177851.jpg'/>
+                            <Link to="/memogame">
+                                <span>Memory</span>
+                            </Link>
+
                         </a>
                         
                     </NavMenu>
@@ -68,7 +80,7 @@ const Logo = styled.img`
 const NavMenu = styled.div`
     display: flex;
     flex: 1;
-    margin-left: 25px;
+    margin-left: 20px;
     align-items: center;
 
     a {
