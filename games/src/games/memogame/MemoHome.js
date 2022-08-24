@@ -13,10 +13,6 @@ function MemoHome() {
                 <h1 className="gameHeader">MEMORY GAME</h1>
             </MemoGameTitle>
             <Board />
-            
-
-            
-            
         </Container>
     )
 }

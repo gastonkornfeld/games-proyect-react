@@ -84,7 +84,7 @@ export default function Board() {
 
   return (
     <div style={{ textAlign: "center" }}>
-      <h1 className="gameHeader">Breakout Game</h1>
+      {/* <h4 className="gameHeader">Breakout Game</h4> */}
       <canvas
         id="canvas"
         ref={canvasRef}

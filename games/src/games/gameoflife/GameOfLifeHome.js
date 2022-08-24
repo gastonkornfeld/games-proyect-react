@@ -7,8 +7,8 @@ import produce from 'immer'
 
 
 
-const numCols = 100;
-const numRows = 100;
+const numCols = 80;
+const numRows = 25;
 
 // to make the neighbours count easier i create an operations list
 
@@ -122,7 +122,7 @@ function GameOfLifeHome() {
                         const rows = [];
                         for (let i = 0; i < numRows; i++) {
                             rows.push(
-                                Array.from(Array(numCols), () => (Math.random() > 0.8 ? 1 : 0 )));
+                                Array.from(Array(numCols), () => (Math.random() > 0.7 ? 1 : 0 )));
                         }
                         setGrid(rows);
                     }}
@@ -132,7 +132,9 @@ function GameOfLifeHome() {
             </ButtonsContainer>
             <Grid style={{
                 display: "grid",
-                gridTemplateColumns: `repeat(${numCols}, 15px)`
+                gridTemplateColumns: `repeat(${numCols}, 15px)`,
+                gridTemplateRows: `repeat(${numRows}, 15px)`
+
             }}>
                 {grid.map((rows, i) => 
                     rows.map((col, k) => ( 

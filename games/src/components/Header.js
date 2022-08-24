@@ -4,14 +4,6 @@ import styled from 'styled-components'
 
 import { Link } from 'react-router-dom'
 
-
-
-
-
- 
-
-
-
 function Header() {
     
 
@@ -27,33 +19,16 @@ function Header() {
                             </Link>
                         </a>
                         <a>
-                            <img src= 'images/watchlist-icon.svg'/> 
-                            <Link to="/breakout">
-                                <span>Breakout</span>
-                            </Link>                
-                        </a>
-                        <a>
-                            <img src= 'images/play-icon-white.png'/>
-                            <Link to="/gameoflife">
-                                <span>Game of life</span>
+                            <img src= 'images/home-icon.svg'/> 
+                            <Link to="/games_list">
+                                <span>Games</span>
                             </Link>
-
-                        </a>
-                        <a>
-                            <img src= 'https://cdn2.vectorstock.com/i/1000x1000/78/51/refresh-head-memory-icon-vector-18177851.jpg'/>
-                            <Link to="/memogame">
-                                <span>Memory</span>
-                            </Link>
-
                         </a>
                         
                     </NavMenu>
                     <UserImg class='user-image' src = '/images/gato.jpg'/>
 
                 </>
-
-            
-            
         </Nav>
     )
 }
@@ -62,18 +37,20 @@ export default Header;
 
 
 const Nav = styled.nav`
-    height: 70px;
+    height: 50px;
     background: #090b13;
     display:flex;
     align-items:center;
-    padding: 0 36px;
+    padding: 0 20px;
     overflow-x: hidden;
     color: white;
+    background-color: green;
+    margin-bottom: 5px;
 
 `
 
 const Logo = styled.img`
-    width : 80px;
+    width : 50px;
     
 `
 

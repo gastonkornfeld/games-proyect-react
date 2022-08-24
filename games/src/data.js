@@ -16,7 +16,7 @@ export default {
     },
     player: {
       name: "Gaston",
-      lives: 10,
+      lives: 5,
       score: 0,
       level: 1,
     },

@@ -118,11 +118,11 @@ const BoardContainer = styled.div`
     display: grid;
     grid-gap: 10px;
     margin: auto;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(9, 1fr);
     padding: 20px;
     background-color: #123;
-    width: calc(100vh - 40px);
-    max-width: calc(100vw - 40px);
+    width: calc(65vw - 20px);
+    max-width: calc(100vw - 20px);
 
 `
 const Card = styled.div`
