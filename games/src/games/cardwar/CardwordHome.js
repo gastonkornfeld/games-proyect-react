@@ -6,7 +6,7 @@
 
 import React from 'react'
 import { useState } from 'react';
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 import DeckOfCards from './Deck';
 
 const newdeck = [];
@@ -32,25 +32,50 @@ export default function CardwordHome() {
   const [deckMidPoint, setDeckMidPoint] = useState(Math.ceil( newDeck.numberOfCards / 2))
   const [playerDeck, setPlayerDeck] = useState(new DeckOfCards(newDeck.cards.slice(0, deckMidPoint)));
   const [computerDeck, setComputerDeck] = useState(new DeckOfCards(newDeck.cards.slice(deckMidPoint, newDeck.numberOfCards)));
-  console.log(playerDeck, computerDeck);
+  const [gamePlaying, setGamePlaying] = useState(false);
+  const [playerCard, setPlayerCard] = useState(playerDeck.pop());
+  const [computerCard, setComputerCard] = useState(computerDeck.pop());
+  const [decideWinner, setDecideWinner] = useState(playerCard.value > computerCard.value);
 
+  const setWiner = () => {
+
+  }
   return (
     <CardGameContainer>
       <ComputerDeck>
-        {deckMidPoint}
+        {computerDeck.numberOfCards}
       </ComputerDeck>
-      <ComputerActualCard>
-      ♦9
+      <ComputerActualCard style = {{color:newDeck.cards[0].color}}>
+      {gamePlaying && (
+        <div>{computerCard.value}{computerCard.suit}</div>
+      )}
+
+      
       </ComputerActualCard>
       <WinnerContainer>
         you lose
       </WinnerContainer>
       <PlayerDeck>
-        {deckMidPoint}
+        {playerDeck.numberOfCards}
       </PlayerDeck>
       <ComputerActualCard style = {{color:newDeck.cards[0].color}}>
-       {newDeck.cards[0].value}{newDeck.cards[0].suit}
+        {gamePlaying && (
+          <div>{playerCard.value}{playerCard.suit}</div>
+        )}
       </ComputerActualCard>
+      <button onClick={()=>{
+
+        setGamePlaying(!gamePlaying);
+        console.log(decideWinner);
+        if(decideWinner) {
+          setComputerDeck(new DeckOfCards(computerDeck.deleteCard()));
+          console.log(computerDeck);
+          // setPlayerDeck();
+        }
+        
+      }}>
+        {!gamePlaying? "Play": "Next Round"}
+      </button>
     </CardGameContainer>
     
   )

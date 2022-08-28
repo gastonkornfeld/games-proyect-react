@@ -7,7 +7,7 @@ import GameOfLifeHome from './games/gameoflife/GameOfLifeHome';
 import MemoHome from './games/memogame/MemoHome';
 import GamesList from './components/GamesList';
 import BreakOutMenu from './games/breakout/BreakOutMenu';
-import CardwordHome from './games/cardwar/CardwordHome';
+import TronHomepage from './games/tron/TronHomepage';
 import Footer from './components/Footer';
 
 import {
@@ -29,7 +29,7 @@ function App() {
           <Route path="/memogame" element={<MemoHome />} />
           <Route path="/games_list" element={<GamesList />} />
           <Route path="/breakout_start" element={<BreakoutHome />} />
-          <Route path="/card_game_start" element={<CardwordHome />} />
+          <Route path="/tron_game_start" element={<TronHomepage />} />
 
 
 

@@ -19,12 +19,10 @@ export default function GamesList() {
                 <ListOfGames>
                     <SingleGameContainer>
                         <div>
-                            <Link to="/breakout">
-                                <img src= 'images/breakout.png'/> 
                                 <Link to="/breakout">
+                                <img src= 'images/breakout.png'/> 
                                     <span>BreakOut</span>
                                 </Link>
-                            </Link>
                             
                         </div>
                         
@@ -32,8 +30,9 @@ export default function GamesList() {
                     <SingleGameContainer>
                         <div>
                             <a>
-                                <img src= 'https://media.forgecdn.net/avatars/404/765/637615962119517296.png'/> 
                                 <Link to="/gameoflife">
+
+                                <img src= 'https://media.forgecdn.net/avatars/404/765/637615962119517296.png'/> 
                                     <span>Game of Life</span>
                                 </Link>
                             </a>
@@ -43,8 +42,9 @@ export default function GamesList() {
                     <SingleGameContainer>
                         <div>
                             <a>
-                                <img src= 'images/goku.jpg'/> 
                                 <Link to="/memogame">
+
+                                <img src= 'images/goku.jpg'/> 
                                     <span>DBZ Memory Game</span>
                                 </Link>
                             </a>
@@ -55,9 +55,22 @@ export default function GamesList() {
                     <SingleGameContainer>
                         <div>
                             <a>
+                                <Link to="/tron_game_start">
                                 <img src= 'images/cardgame.png'/> 
-                                <Link to="/card_game_start">
+                                
                                     <span>Card War Game</span>
+                                </Link>
+                            </a>
+                        </div>
+                        
+                    </SingleGameContainer>
+                    <SingleGameContainer>
+                        <div>
+                            <a>
+                                <Link to="/tron_game_start">
+                                    <img src= 'images/tron.png'/>
+                                
+                                    <span>Tron</span>
                                 </Link>
                             </a>
                         </div>
@@ -81,19 +94,21 @@ const GamesHomeContainer = styled.div`
     height: 90vh;
     width: 90vw;
     margin: 0 auto;
+    font-family: "Bungee", san-serif;
 `
 
 const TitleContainer = styled.div`
-    background-color: blue;
     width: 100%;
     height: 20%;
     display:flex;
     align-items: center;
     justify-content: center;
+    background:
+        linear-gradient(to left top, rgba(0, 255, 255, 1) 0%/*bottom-right color*/, rgba(255, 0, 255, 0.5) 50% /*middle color*/, rgba(255, 255, 0, 1) 100% /*top-left color*/),
+        linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 1))/*"faked" black background make sure to add last or it will appear before the transparent/colored layer*/;
 
 `
 const Title = styled.div`
-    background-color: red;
     letter-spacing: 16px;
     width: 50%;
     text-transform: uppercase;
@@ -134,6 +149,7 @@ const ListOfGames = styled.div`
             letter-spacing: 1.42px;
             text-transform: uppercase;
             position: relative;
+            margin-left: 5px;
 
             &:after {
                 content: '';

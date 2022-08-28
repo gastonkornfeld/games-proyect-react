@@ -39,6 +39,18 @@ export default class DeckOfCards {
             this.cards[i] = oldValue;
         }
     }
+
+    pop() {
+        return this.cards.shift();
+    }
+
+    deleteCard () {
+        this.cards.pop()
+    }
+
+    push(card) {
+        this.cards.push(card);
+    }
 }
 
 
@@ -50,6 +62,14 @@ class Card {
 
     get color() {
         return this.suit === '♣' || this.suit === '♠' ? 'black': 'red';
+    }
+
+    getHtml() {
+        const cardDiv = document.createElement('div ');
+        cardDiv.innerHTML= this.suit;
+        cardDiv.classList.add('card', this.color);
+        cardDiv.dataset.value = `${this.value} ${this.suit}`;
+        return cardDiv;
     }
 }
 
