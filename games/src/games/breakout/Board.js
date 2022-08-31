@@ -83,7 +83,7 @@ export default function Board() {
   }, []);
 
   return (
-    <div style={{ textAlign: "center" }}>
+    <div style={{ textAlign: "center"  }}>
       {/* <h4 className="gameHeader">Breakout Game</h4> */}
       <canvas
         id="canvas"
