@@ -76,6 +76,18 @@ export default function GamesList() {
                         </div>
                         
                     </SingleGameContainer>
+                    <SingleGameContainer>
+                        <div>
+                            <a>
+                                <Link to="/chess">
+                                    <img src= 'https://flyclipart.com/thumb2/chess-piece-king-royalty-free-vector-clip-art-illustration-619344.png'/>
+                                
+                                    <span>Two Players Chess</span>
+                                </Link>
+                            </a>
+                        </div>
+                        
+                    </SingleGameContainer>
                     
                 </ListOfGames>
             </GamesListParagraph>
@@ -91,7 +103,7 @@ export default function GamesList() {
 
 const GamesHomeContainer = styled.div`
     background-color: white;
-    height: 90vh;
+    max-height: 90vh;
     width: 90vw;
     margin: 0 auto;
     font-family: "Bungee", san-serif;

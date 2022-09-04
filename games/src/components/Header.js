@@ -9,9 +9,9 @@ function Header() {
 
     return (
         <Nav>
-            <Logo class='logo-header' src= 'https://arkanoid.org/img/logoarkanoid.png' />  
+            <Logo className='logo-header' src= 'https://arkanoid.org/img/logoarkanoid.png' />  
                 <>
-                    <NavMenu class='nav-menu'>
+                    <NavMenu className='nav-menu'>
                         <a>
                             <img src= 'images/home-icon.svg'/> 
                             <Link to="/">
@@ -26,7 +26,7 @@ function Header() {
                         </a>
                         
                     </NavMenu>
-                    <UserImg class='user-image' src = '/images/gato.jpg'/>
+                    <UserImg className='user-image' src = '/images/gato.jpg'/>
 
                 </>
         </Nav>
@@ -37,7 +37,7 @@ export default Header;
 
 
 const Nav = styled.nav`
-    height: 50px;
+    height: 45px;
     background: #090b13;
     display:flex;
     align-items:center;
@@ -45,7 +45,7 @@ const Nav = styled.nav`
     overflow-x: hidden;
     color: white;
     background-color: green;
-    margin-bottom: 5px;
+    margin: 0 0 5px 0;
 
 `
 
