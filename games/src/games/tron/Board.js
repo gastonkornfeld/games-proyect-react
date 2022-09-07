@@ -39,7 +39,6 @@ export default function Board({players, gameStatus}) {
     }, [players])
     return (
         <>
-
             <canvas
                 style={{
                     border: "1px solid #777",
@@ -62,7 +61,6 @@ export default function Board({players, gameStatus}) {
                 ))}
             </InstructionsContainer>
         </>
-
 )
 }
 

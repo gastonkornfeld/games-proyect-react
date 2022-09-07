@@ -5,8 +5,12 @@ import React, {useState, useEffect, useRef} from 'react'
 import ChessBoard from 'chessboardjsx'
 import styled from 'styled-components'
 import {Chess} from 'chess.js'
+import { useAuth } from '../../contexts/AuthContext'
+import NotLogged from '../../components/NotLogged'
+
 
 export default function ChessHome() {
+  const {currentUser} = useAuth();
 
   const [fen, setFen] = useState('start');
 
@@ -34,12 +38,18 @@ export default function ChessHome() {
     setFen('start');
   }
   return (
-    <ChessContainer>
-      {
-        game.current && game.current.game_over() ? <GameOver><h1>Game over</h1><br></br><button onClick={startOver}>Play Again</button></GameOver> : <span></span>
-      }
-      <ChessBoard areArrowsAllowed={true} position={fen} onDrop={onDrop} />
-    </ChessContainer>
+    <>
+      {currentUser && (
+        <ChessContainer>
+          {
+            game.current && game.current.game_over() ? <GameOver><h1>Game over</h1><br></br><button onClick={startOver}>Play Again</button></GameOver> : <span></span>
+          }
+          <ChessBoard areArrowsAllowed={true} position={fen} onDrop={onDrop} />
+        </ChessContainer>
+      )}
+      {!currentUser && <NotLogged />}
+    </>
+    
   )
 }
 

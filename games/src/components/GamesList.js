@@ -3,99 +3,110 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import { useAuth } from '../contexts/AuthContext'
+import NotLogged from './NotLogged';
+
 
 
 
 export default function GamesList() {
+  const {currentUser, logout} = useAuth();
+
   return (
-    <GamesHomeContainer>
-        <TitleContainer>
-            <Title>
-                <h3>Games List</h3>
-            </Title>
-        </TitleContainer>
-        <GamesListContainer>
-            <GamesListParagraph>
-                <ListOfGames>
-                    <SingleGameContainer>
-                        <div>
-                                <Link to="/breakout">
-                                <img src= 'images/breakout.png'/> 
-                                    <span>BreakOut</span>
-                                </Link>
+    <>
+        {currentUser && (
+            <GamesHomeContainer>
+                <TitleContainer>
+                    <Title>
+                        <h3>Games List</h3>
+                    </Title>
+                </TitleContainer>
+                <GamesListContainer>
+                    <GamesListParagraph>
+                        <ListOfGames>
+                            <SingleGameContainer>
+                                <div>
+                                        <Link to="/breakout">
+                                        <img src= 'images/breakout.png'/> 
+                                            <span>BreakOut</span>
+                                        </Link>
+                                    
+                                </div>
+                                
+                            </SingleGameContainer>
+                            <SingleGameContainer>
+                                <div>
+                                    <a>
+                                        <Link to="/gameoflife">
+
+                                        <img src= 'https://media.forgecdn.net/avatars/404/765/637615962119517296.png'/> 
+                                            <span>Game of Life</span>
+                                        </Link>
+                                    </a>
+                                </div>
+                                
+                            </SingleGameContainer>
+                            <SingleGameContainer>
+                                <div>
+                                    <a>
+                                        <Link to="/memogame">
+
+                                        <img src= 'images/goku.jpg'/> 
+                                            <span>DBZ Memory Game</span>
+                                        </Link>
+                                    </a>
+                                    
+                                </div>
+                                
+                            </SingleGameContainer>
+                            <SingleGameContainer>
+                                <div>
+                                    <a>
+                                        <Link to="/tron_game_start">
+                                        <img src= 'images/cardgame.png'/> 
+                                        
+                                            <span>Card War Game</span>
+                                        </Link>
+                                    </a>
+                                </div>
+                                
+                            </SingleGameContainer>
+                            <SingleGameContainer>
+                                <div>
+                                    <a>
+                                        <Link to="/tron_game_start">
+                                            <img src= 'images/tron.png'/>
+                                        
+                                            <span>Tron</span>
+                                        </Link>
+                                    </a>
+                                </div>
+                                
+                            </SingleGameContainer>
+                            <SingleGameContainer>
+                                <div>
+                                    <a>
+                                        <Link to="/chess">
+                                            <img src= 'https://flyclipart.com/thumb2/chess-piece-king-royalty-free-vector-clip-art-illustration-619344.png'/>
+                                        
+                                            <span>Two Players Chess</span>
+                                        </Link>
+                                    </a>
+                                </div>
+                                
+                            </SingleGameContainer>
                             
-                        </div>
-                        
-                    </SingleGameContainer>
-                    <SingleGameContainer>
-                        <div>
-                            <a>
-                                <Link to="/gameoflife">
+                        </ListOfGames>
+                    </GamesListParagraph>
+                    <GamesListInfo>
 
-                                <img src= 'https://media.forgecdn.net/avatars/404/765/637615962119517296.png'/> 
-                                    <span>Game of Life</span>
-                                </Link>
-                            </a>
-                        </div>
-                        
-                    </SingleGameContainer>
-                    <SingleGameContainer>
-                        <div>
-                            <a>
-                                <Link to="/memogame">
-
-                                <img src= 'images/goku.jpg'/> 
-                                    <span>DBZ Memory Game</span>
-                                </Link>
-                            </a>
-                            
-                        </div>
-                        
-                    </SingleGameContainer>
-                    <SingleGameContainer>
-                        <div>
-                            <a>
-                                <Link to="/tron_game_start">
-                                <img src= 'images/cardgame.png'/> 
-                                
-                                    <span>Card War Game</span>
-                                </Link>
-                            </a>
-                        </div>
-                        
-                    </SingleGameContainer>
-                    <SingleGameContainer>
-                        <div>
-                            <a>
-                                <Link to="/tron_game_start">
-                                    <img src= 'images/tron.png'/>
-                                
-                                    <span>Tron</span>
-                                </Link>
-                            </a>
-                        </div>
-                        
-                    </SingleGameContainer>
-                    <SingleGameContainer>
-                        <div>
-                            <a>
-                                <Link to="/chess">
-                                    <img src= 'https://flyclipart.com/thumb2/chess-piece-king-royalty-free-vector-clip-art-illustration-619344.png'/>
-                                
-                                    <span>Two Players Chess</span>
-                                </Link>
-                            </a>
-                        </div>
-                        
-                    </SingleGameContainer>
-                    
-                </ListOfGames>
-            </GamesListParagraph>
-            <GamesListInfo>
-
-            </GamesListInfo>
-        </GamesListContainer>
-    </GamesHomeContainer>
+                    </GamesListInfo>
+                </GamesListContainer>
+            </GamesHomeContainer>
+        )}
+        {!currentUser && <NotLogged />}
+    </>
+    
   )
 
 }

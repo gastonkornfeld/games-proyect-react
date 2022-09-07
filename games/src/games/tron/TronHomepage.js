@@ -12,6 +12,8 @@ import getPlayableCells from './utils/getPlayableCells';
 import Start from './Start';
 import Result from '../breakout/Result';
 import Button from '../../components/Button';
+import { useAuth } from '../../contexts/AuthContext'
+import NotLogged from '../../components/NotLogged'
 
 const players = [PLAYER_ONE, PLAYER_TWO];
 const initialState = {
@@ -81,6 +83,8 @@ function updateGame(game, action) {
 
 export default function TronHomepage() {
     const [game, gameDispatch] = useReducer(updateGame, initialState);
+    const {currentUser} = useAuth();
+
     let result = null;
     const players = game.players;
     const diedPlayers = players.filter(player => player.hasDied);
@@ -131,12 +135,19 @@ export default function TronHomepage() {
         }
     }
     return (
-        <TronGameContainer>
-            <Board players = {game.players} gameStatus={game.gameStatus}/>
-            {game.gameStatus === GAME_READY && <Start onClick={handleStart}/>}
-            {game.gameStatus === GAME_ENDED && <Result onClick={handleRestart} result={result}/>}
+        <>
+            {currentUser && (
+                <TronGameContainer>
+                    <Board players = {game.players} gameStatus={game.gameStatus}/>
+                    {game.gameStatus === GAME_READY && <Start onClick={handleStart}/>}
+                    {game.gameStatus === GAME_ENDED && <Result onClick={handleRestart} result={result}/>}
 
-        </TronGameContainer>
+                </TronGameContainer>
+            )}
+            {!currentUser && <NotLogged />}
+
+        </>
+        
     
     )
 }

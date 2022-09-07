@@ -1,6 +1,8 @@
 import React, {useState, useCallback, useRef} from 'react'
 import styled from 'styled-components'
 import produce from 'immer'
+import { useAuth } from '../../contexts/AuthContext'
+import NotLogged from '../../components/NotLogged'
 
 
 
@@ -35,6 +37,7 @@ const generateEmptyGrid = () => {
 
 function GameOfLifeHome() {
 
+    const {currentUser} = useAuth();
 
 
     const [grid, setGrid] = useState(() => {
@@ -94,72 +97,78 @@ function GameOfLifeHome() {
 // ---------------------------------------------------------------------------------------------------
 
     return (
-        <Container>
-            <GameOfLifeTitle>
-                <h1 className="gameHeader">Game of life</h1>
-            </GameOfLifeTitle>
-            <ButtonsContainer>
-                <StartButton
-                    onClick= {() => {
-                        setRunning(!running);
-                        if (!running) {
-                            runningRef.current = true;
-                            runSimulation();
-                        }
-                    }}
-                >
-                    {running ? 'STOP' : "REPRODUCE"}
-                </StartButton>
-                <ClearButton
-                    onClick={() => {
-                        setGrid(generateEmptyGrid());
-                    }}
-                >
-                    CLEAR
-                </ClearButton>
-                <RandomButton
-                    onClick={() => {
-                        const rows = [];
-                        for (let i = 0; i < numRows; i++) {
-                            rows.push(
-                                Array.from(Array(numCols), () => (Math.random() > 0.7 ? 1 : 0 )));
-                        }
-                        setGrid(rows);
-                    }}
-                >
-                    RANDOM
-                </RandomButton>
-            </ButtonsContainer>
-            <Grid style={{
-                display: "grid",
-                gridTemplateColumns: `repeat(${numCols}, 15px)`,
-                gridTemplateRows: `repeat(${numRows}, 15px)`
+        <>
+            {currentUser && (
+                <Container>
+                    <GameOfLifeTitle>
+                        <h1 className="gameHeader">Game of life</h1>
+                    </GameOfLifeTitle>
+                    <ButtonsContainer>
+                        <StartButton
+                            onClick= {() => {
+                                setRunning(!running);
+                                if (!running) {
+                                    runningRef.current = true;
+                                    runSimulation();
+                                }
+                            }}
+                        >
+                            {running ? 'STOP' : "REPRODUCE"}
+                        </StartButton>
+                        <ClearButton
+                            onClick={() => {
+                                setGrid(generateEmptyGrid());
+                            }}
+                        >
+                            CLEAR
+                        </ClearButton>
+                        <RandomButton
+                            onClick={() => {
+                                const rows = [];
+                                for (let i = 0; i < numRows; i++) {
+                                    rows.push(
+                                        Array.from(Array(numCols), () => (Math.random() > 0.7 ? 1 : 0 )));
+                                }
+                                setGrid(rows);
+                            }}
+                        >
+                            RANDOM
+                        </RandomButton>
+                    </ButtonsContainer>
+                    <Grid style={{
+                        display: "grid",
+                        gridTemplateColumns: `repeat(${numCols}, 15px)`,
+                        gridTemplateRows: `repeat(${numRows}, 15px)`
 
-            }}>
-                {grid.map((rows, i) => 
-                    rows.map((col, k) => ( 
-                        <div
-                        key = {`${i}-${k}`}
-                        onClick = {() => {
-                            const newGrid = produce(grid, gridCopy => {
-                                gridCopy[i][k] = grid[i][k] ? 0 : 1;
-                            })
-                            setGrid(newGrid);
-                        }}
-                            style={{ 
-                                width: 15, 
-                                height: 15,
-                                backgroundColor: grid[i][k] ? 'white' : undefined,
-                                border: 'solid 1px white'
-                            }} 
+                    }}>
+                        {grid.map((rows, i) => 
+                            rows.map((col, k) => ( 
+                                <div
+                                key = {`${i}-${k}`}
+                                onClick = {() => {
+                                    const newGrid = produce(grid, gridCopy => {
+                                        gridCopy[i][k] = grid[i][k] ? 0 : 1;
+                                    })
+                                    setGrid(newGrid);
+                                }}
+                                    style={{ 
+                                        width: 15, 
+                                        height: 15,
+                                        backgroundColor: grid[i][k] ? 'white' : undefined,
+                                        border: 'solid 1px white'
+                                    }} 
 
-                        />
-                    ))
-                )}
+                                />
+                            ))
+                        )}
 
-            </Grid>
-            
-        </Container>
+                    </Grid>
+                
+                </Container>
+            )}
+            {!currentUser && <NotLogged />}
+        </>
+        
     )
 }
 

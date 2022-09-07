@@ -4,16 +4,28 @@ import React from 'react'
 import styled from 'styled-components'
 
 import Board from './Board'
+import { useAuth } from '../../contexts/AuthContext'
+import NotLogged from '../../components/NotLogged'
+
 
 
 function MemoHome() {
+    const {currentUser} = useAuth();
+
     return (
-        <Container>
-            <MemoGameTitle>
-                <h1 className="gameHeader">MEMORY GAME</h1>
-            </MemoGameTitle>
-            <Board />
-        </Container>
+        <>
+            {currentUser && (
+                <Container>
+                    <MemoGameTitle>
+                        <h1 className="gameHeader">MEMORY GAME</h1>
+                    </MemoGameTitle>
+                    <Board />
+                </Container>
+            )}
+            {!currentUser && <NotLogged />}
+
+        </>
+        
     )
 }
 

@@ -5,27 +5,28 @@ import React, {useRef} from 'react'
 import { useState } from 'react';
 import { Card, Form, Button, Alert, Container } from 'react-bootstrap'
 import { useAuth } from '../contexts/AuthContext';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+
 
 
 export default function Login() {
     const emailRef = useRef();
     const passwordRef = useRef();
-    const { signup } = useAuth();
+    const { login } = useAuth();
     const [error, setError] = useState('');
-    const [loading, setLoading] = useState(false); 
+    const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
+    
     async function handleSubmit(e) {
         e.preventDefault()
-
-        
-
         // set loading prevent the user to click several times the button
         try {
             setError('');
             setLoading(true);
-            await signup(emailRef.current.value, passwordRef.current.value)
+            await login(emailRef.current.value, passwordRef.current.value);
+            navigate('/')
         } catch {
-            setError('Failed to create an account')
+            setError('Failed to Sign In')
         }
         setLoading(false)
     }
@@ -49,11 +50,14 @@ export default function Login() {
                             </Form.Label>
                             <Form.Control type='password' required ref= {passwordRef} />
                         </Form.Group>
-                        <Button disabled={loading} className='w-100 btn btn-success' type='submit'>
+                        <Button disabled={loading} className='w-100 btn btn-success mt-2' type='submit'>
                             Log In
                         </Button>
-                        
                     </Form>
+                        <div className='w-100 text-center mt-3 mb-1'>
+                            <Link to='/forgotpassword'>Forgot password?</Link>
+                        </div>
+
                 </Card.Body>
                 <div className='w-100 text-center mt-2 mb-1'>
                     Need an account? <Link to="/signup">SignUp</Link>

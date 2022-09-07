@@ -12,16 +12,19 @@ import Footer from './components/Footer';
 import ChessHome from './games/chess/ChessHome';
 import SignUp from './components/SignUp';
 import Login from './components/Login';
-import { AuthProvider } from './contexts/AuthContext';
+import { AuthProvider, useAuth } from './contexts/AuthContext';
+import ForgotPassword from './components/ForgotPassword';
 
 import {
   BrowserRouter as Router,
   Routes,
   Route,
 } from "react-router-dom";
+import NotLogged from './components/NotLogged';
 
 
 function App() {
+
   return (
     <AuthProvider>
       <Router>
@@ -30,8 +33,6 @@ function App() {
             <Route exact path="/" element={<Home/>} />
             <Route path="/signup" element={<SignUp/>} />
             <Route path="/login" element={<Login/>} />
-
-
             <Route path="/breakout" element={<BreakOutMenu />} />
             <Route path="/breakout_start" element={<BreakoutHome />} />
             <Route path="/gameoflife" element={<GameOfLifeHome />} />
@@ -39,9 +40,7 @@ function App() {
             <Route path="/games_list" element={<GamesList />} />
             <Route path="/tron_game_start" element={<TronHomepage />} />
             <Route path="/chess" element={<ChessHome />} />
-
-
-
+            <Route path="/forgotpassword" element={<ForgotPassword />} />
 
           </Routes>
         <Footer/>
