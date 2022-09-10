@@ -21,7 +21,7 @@ export default function NotLogged() {
                 </p>
             </Card.Body>
             <div className='w-100 text-center mt-2 mb-1'>
-                <Link to={'/login'}><Button variant='success'>LOG IN</Button></Link>
+                <Link to={'/login'}><Button className='mb-3' variant='success'>LOG IN</Button></Link>
             </div>
         </Card>
         <Card className='text-center mb-3' style={{backgroundColor: '#351a9d70', color: 'white', fontFamily: 'Bungee'}}>
@@ -34,7 +34,7 @@ export default function NotLogged() {
 
         </Card.Body>
         <div className='w-100 text-center mt-2 mb-1'>
-        <Link to={'/signup'}><Button variant='success'>Create Account</Button></Link>
+        <Link to={'/signup'}><Button className='mb-3' variant='success'>Create Account</Button></Link>
         </div>
         </Card>
     </>

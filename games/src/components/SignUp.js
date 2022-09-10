@@ -38,7 +38,7 @@ export default function SignUp() {
   return (
     <Container className='d-flex align-items-center justify-content-center' style={{ minHeight: '100vh'}}>
         <div className='w-100 btn' style={{ maxWidth: '400px'}}>
-            <Card>
+            <Card style={{color: 'navy', fontFamily: 'Bungee'}} className='bg-warning'>
                 <Card.Body>
                     <h2 className='text-center mb-4'> SIGN UP TO THE GAMES PAGE</h2>
                     {error && <Alert variant='danger'>{error}</Alert>}
@@ -61,7 +61,12 @@ export default function SignUp() {
                             </Form.Label>
                             <Form.Control type='password' required ref= {passwordConfirmRef} />
                         </Form.Group>
-                        <Button disabled={loading} className='w-100 btn btn-success' type='submit'>
+                        <Button
+                            style={{color:'ivory'}}
+                            disabled={loading}
+                            className='w-100 btn btn-primary mt-4'
+                            type='submit'
+                        >
                             SIGN UP
                         </Button>
                         

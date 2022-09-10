@@ -20,7 +20,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import NotLogged from './components/NotLogged';
+import UpdateProfile from './components/UpdateProfile';
 
 
 function App() {
@@ -41,6 +41,8 @@ function App() {
             <Route path="/tron_game_start" element={<TronHomepage />} />
             <Route path="/chess" element={<ChessHome />} />
             <Route path="/forgotpassword" element={<ForgotPassword />} />
+            <Route path="/updateprofile" element={<UpdateProfile />} />
+
 
           </Routes>
         <Footer/>
