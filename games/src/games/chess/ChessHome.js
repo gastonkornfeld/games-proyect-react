@@ -42,7 +42,7 @@ export default function ChessHome() {
       {currentUser && (
         <ChessContainer>
           {
-            game.current && game.current.game_over() ? <GameOver><h1>Game over</h1><br></br><button onClick={startOver}>Play Again</button></GameOver> : <span></span>
+            game.current && game.current.game_over() ? <GameOver><h1>Game over</h1><br></br><button className='btn btn-success' onClick={startOver}>Play Again</button></GameOver> : <span></span>
           }
           <ChessBoard areArrowsAllowed={true} position={fen} onDrop={onDrop} />
         </ChessContainer>
@@ -66,8 +66,9 @@ const GameOver = styled.div`
   text-align: center;
   color: white;
   padding-right: 30px;
+  font-family: 'Bungee'; 
 
   button {
-    padding:20px
+    padding:15px
   }
 `

@@ -105,6 +105,7 @@ function GameOfLifeHome() {
                     </GameOfLifeTitle>
                     <ButtonsContainer>
                         <StartButton
+                            className= {running ? 'btn btn-danger': 'btn btn-success'}
                             onClick= {() => {
                                 setRunning(!running);
                                 if (!running) {
@@ -116,6 +117,7 @@ function GameOfLifeHome() {
                             {running ? 'STOP' : "REPRODUCE"}
                         </StartButton>
                         <ClearButton
+                            className='btn btn-dark'
                             onClick={() => {
                                 setGrid(generateEmptyGrid());
                             }}
@@ -123,6 +125,7 @@ function GameOfLifeHome() {
                             CLEAR
                         </ClearButton>
                         <RandomButton
+                            className='btn btn-warning'
                             onClick={() => {
                                 const rows = [];
                                 for (let i = 0; i < numRows; i++) {
@@ -154,7 +157,7 @@ function GameOfLifeHome() {
                                     style={{ 
                                         width: 15, 
                                         height: 15,
-                                        backgroundColor: grid[i][k] ? 'white' : undefined,
+                                        backgroundColor: grid[i][k] ? 'yellow' : undefined,
                                         border: 'solid 1px white'
                                     }} 
 
@@ -204,13 +207,11 @@ const StartButton = styled.button`
     width: 200px;
     margin-bottom: 20px;
     padding: 10px 0;
-    background-color: #b73a1c;
-    color: aliceblue;
+    font-family: 'Bungee';
+
     
     :hover {
-        background-color: red;
         color: yellow; 
-        font-size: 14px;
     }
     
 `
@@ -219,28 +220,21 @@ const ClearButton = styled.button`
     width: 200px;
     margin-bottom: 20px;
     padding: 10px 0;
-    background-color: #b73a1c;
-    color: aliceblue;
+    font-family: 'Bungee';
 
-
-    :hover {
-        background-color: white;
-        color: black; 
-        font-size: 14px;
-    }
 `
 
 const RandomButton = styled.button`
     width: 200px;
     margin-bottom: 20px;
     padding: 10px 0;
-    background-color: #b73a1c;
-    color: aliceblue;
+    font-family: 'Bungee';
+
+
 
 
     :hover {
-        background-color: green;
-        color: black; 
-        font-size: 14px;
+        background-color: orange;
+        color: red; 
     }
 `

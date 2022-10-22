@@ -24,7 +24,7 @@ const StartContanier = styled.div`
     justify-content: center;
     align-items: center;
     color: #FFF;
-    background-color: #00000088;
+    background-color: #000000;
 
     button {
         padding: 10px 30px;

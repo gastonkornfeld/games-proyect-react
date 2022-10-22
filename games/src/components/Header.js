@@ -1,32 +1,65 @@
 
 import styled from 'styled-components'
+import { useAuth } from '../contexts/AuthContext'
+import { Button } from 'react-bootstrap'
+
+import React, {useState} from 'react';
 
 
-import { Link } from 'react-router-dom'
+
+import { Link, useNavigate } from 'react-router-dom'
 
 function Header() {
-    
+    const [error, setError] = useState('');
+    const {currentUser, logout} = useAuth();
+    const navigate = useNavigate();
+
+
+
+    async function handleLogOut() {
+        setError('');
+
+        try {
+        await logout()
+        navigate('/login')
+        } catch {
+        setError('Failed to Logout')
+        alert('failed to log out');
+        }
+
+    }
 
     return (
         <Nav>
-            <Logo className='logo-header' src= 'https://arkanoid.org/img/logoarkanoid.png' />  
+            <Link to='./'><Logo alt='' className='logo-header' src= '/images/kornfeld3.jpg' /></Link>
+            <Link to='./'><Logo alt='' className='logo-header' src= '/images/games.jpg' /></Link>
+
                 <>
                     <NavMenu className='nav-menu'>
                         <a>
-                            <img src= 'images/home-icon.svg'/> 
+                            <i class="fa fa-home fa-2x"></i>
+
                             <Link to="/">
                                 <span>Home</span>
                             </Link>
                         </a>
                         <a>
-                            <img src= 'images/home-icon.svg'/> 
+                            <i class="fa fa-gamepad fa-2x"></i>
                             <Link to="/games_list">
                                 <span>Games</span>
                             </Link>
                         </a>
+                        <a>
+                            <i class="fa fa-trophy fa-2x"></i>
+                            <Link to="/leaderboard">
+                                <span>LeaderBoard</span>
+                            </Link>
+                        </a>
                         
                     </NavMenu>
-                    <UserImg className='user-image' src = '/images/gato.jpg'/>
+                    <Link style={{textDecoration: 'none', color: "white"}} to={'/logout'}>
+                        {currentUser && <Button variant='danger' onClick={handleLogOut}>LOG OUT</Button>}
+                    </Link>
 
                 </>
         </Nav>
@@ -38,19 +71,21 @@ export default Header;
 
 const Nav = styled.nav`
     height: 45px;
-    background: #090b13;
+    width:100vw;
     display:flex;
     align-items:center;
     padding: 0 20px;
     overflow-x: hidden;
     color: white;
-    background-color: green;
+    background-color: #134082;
     margin: 0 0 5px 0;
 
 `
 
 const Logo = styled.img`
-    width : 50px;
+    width : 12vh;
+    height: 7vh;
+    padding: 5px;
     
 `
 
@@ -104,11 +139,13 @@ const NavMenu = styled.div`
    
 `
 
-const UserImg  = styled.img`
+const LogOut  = styled.span`
     width:42px;
     height : 42px;
     border-radius: 50%;
     cursor:pointer;
+    text-decoration: none;
+    color: white;
 
 `
 

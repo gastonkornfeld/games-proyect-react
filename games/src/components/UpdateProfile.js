@@ -5,6 +5,7 @@ import { Card, Form, Button, Alert, Container } from 'react-bootstrap'
 import { useAuth } from '../contexts/AuthContext';
 import { Link, useNavigate } from 'react-router-dom'
 import NotLogged from './NotLogged';
+import Footer from './Footer';
 
 
 export default function UpdateProfile() {
@@ -49,58 +50,62 @@ export default function UpdateProfile() {
   return (
     <>
         {currentUser && (
-            <Container className='d-flex align-items-center justify-content-center' style={{ minHeight: '100vh'}}>
-                <div className='w-100 btn' style={{ maxWidth: '400px'}}>
-                    <Card style={{color: 'navy', fontFamily: 'Bungee'}} className='bg-info'>
-                        <Card.Body>
-                            <h2 className='text-center mb-4'> Update Profile</h2>
-                            {error && <Alert variant='danger'>{error}</Alert>}
-                            <Form onSubmit={handleSubmit}>
-                                <Form.Group id='email'>
-                                    <Form.Label>
-                                        Your Email
-                                    </Form.Label>
-                                    <Form.Control type='email' required ref= {emailRef} default= {currentUser.email} />
-                                </Form.Group>
-                                <Form.Group id='password'>
-                                    <Form.Label>
-                                        Your Password
-                                    </Form.Label>
-                                    <Form.Control
-                                        type='password'
-                                        ref= {passwordRef}
-                                        placeholder='Leave blank to keep the same'
-                                    />
-                                </Form.Group>
-                                <Form.Group id='password-confirm'>
-                                    <Form.Label>
-                                        Confirm Your Password
-                                    </Form.Label>
-                                    <Form.Control
-                                        type='password'
-                                        ref= {passwordConfirmRef}
-                                        placeholder='Leave blank to keep the same'
-                                    />
-                                </Form.Group>
-                                <Button
-                                    style={{color:'ivory'}}
-                                    disabled={loading}
-                                    className='w-100 btn btn-primary mt-4'
-                                    type='submit'
-                                    variant='dark'
-                                >
-                                    Confirm Changes
-                                </Button>
-                                
-                            </Form>
-                        </Card.Body>
-                        <div className='w-100 text-center mt-2 mb-1'>
-                            <Link to="/">Cancel</Link>
-                        </div>
-                    </Card>
-                    
-                </div>
-            </Container>
+            <>
+                <Container className='d-flex align-items-center justify-content-center' style={{ minHeight: '100vh'}}>
+                    <div className='w-100 btn' style={{ maxWidth: '400px'}}>
+                        <Card style={{color: 'navy', fontFamily: 'Bungee'}} className='bg-info'>
+                            <Card.Body>
+                                <h2 className='text-center mb-4'> Update Profile</h2>
+                                {error && <Alert variant='danger'>{error}</Alert>}
+                                <Form onSubmit={handleSubmit}>
+                                    <Form.Group id='email'>
+                                        <Form.Label>
+                                            Your Email
+                                        </Form.Label>
+                                        <Form.Control type='email' required ref= {emailRef} default= {currentUser.email} />
+                                    </Form.Group>
+                                    <Form.Group id='password'>
+                                        <Form.Label>
+                                            Your Password
+                                        </Form.Label>
+                                        <Form.Control
+                                            type='password'
+                                            ref= {passwordRef}
+                                            placeholder='Leave blank to keep the same'
+                                        />
+                                    </Form.Group>
+                                    <Form.Group id='password-confirm'>
+                                        <Form.Label>
+                                            Confirm Your Password
+                                        </Form.Label>
+                                        <Form.Control
+                                            type='password'
+                                            ref= {passwordConfirmRef}
+                                            placeholder='Leave blank to keep the same'
+                                        />
+                                    </Form.Group>
+                                    <Button
+                                        style={{color:'ivory'}}
+                                        disabled={loading}
+                                        className='w-100 btn btn-primary mt-4'
+                                        type='submit'
+                                        variant='dark'
+                                    >
+                                        Confirm Changes
+                                    </Button>
+                                    
+                                </Form>
+                            </Card.Body>
+                            <div className='w-100 text-center mt-2 mb-1'>
+                                <Link to="/">Cancel</Link>
+                            </div>
+                        </Card>
+                        
+                    </div>
+                </Container>
+            <Footer />
+            </>
+
         )}
         {!currentUser && <NotLogged />}
     </>

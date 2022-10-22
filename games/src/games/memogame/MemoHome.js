@@ -33,9 +33,14 @@ export default MemoHome
 
 
 const Container = styled.div`
+    padding-top: 5px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    border: 2px solid red;
+    background: url('./images/dbzwall.jpg');
+    background-size: cover;
+
 
 `
 

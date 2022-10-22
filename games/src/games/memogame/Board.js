@@ -178,12 +178,18 @@ const InfoContainer = styled.div`
 
 const Clicks = styled.div`
     padding: 10px;
+    color: cadetblue;
+    font-weight: 900;
+    font-family: 'Bungee';
 
 `
 
 
 const Pairs = styled.div`
- padding: 10px;
+    padding: 10px;
+    color: cadetblue;
+    font-weight: 900;
+    font-family: 'Bungee';
 
 
 `
